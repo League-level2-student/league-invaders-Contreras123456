@@ -7,10 +7,8 @@ public class LeagueInvaders {
 	GamePanel gamepanel;
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
-	final int MENU = 0;
-	final int GAME = 1;
-	final int END = 2;
-	int currentState = MENU;
+	
+
 	LeagueInvaders(){
 		frame = new JFrame();
 	 gamepanel = new GamePanel();
@@ -18,6 +16,7 @@ public class LeagueInvaders {
 public static void main(String[] args) {
 	LeagueInvaders leagueinvaders = new LeagueInvaders();
 	leagueinvaders.setup();
+	
 }
 void setup() {
 	frame.add(gamepanel);
