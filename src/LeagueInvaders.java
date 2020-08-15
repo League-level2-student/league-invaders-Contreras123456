@@ -24,7 +24,7 @@ void setup() {
 	frame.setVisible(true);
 	frame.add(panel);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
+	frame.addKeyListener(gamepanel);
 }
 
 }
