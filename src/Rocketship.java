@@ -5,7 +5,7 @@ public class Rocketship extends GameObject {
 
 Rocketship(int x, int y, int width, int height){
 	super(x,y,width,height);
-	int speed = 10;
+	speed = 10;
 }
 void draw(Graphics g) {
 	g.setColor(Color.BLUE);
@@ -13,12 +13,12 @@ void draw(Graphics g) {
 
 }
  void up() {
-	 if (y>0) {
-		 y-=speed;	
-	} 
+	  if(y>0) {
+		  y-=speed;
+	  }
  }
  void down() {
-	 if (y<800) {
+	 if (y<700) {
 		y+=speed; 
 	}
 
@@ -30,7 +30,7 @@ void draw(Graphics g) {
 	
  }
  void right() {
-	 if(x<500) {
+	 if(x<250) {
 		 x+=speed;
 	 }
  }
