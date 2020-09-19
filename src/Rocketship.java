@@ -18,7 +18,7 @@ void draw(Graphics g) {
 	  }
  }
  void down() {
-	 if (y<700) {
+	 if (y<LeagueInvaders.HEIGHT - 70) {
 		y+=speed; 
 	}
 
@@ -30,7 +30,7 @@ void draw(Graphics g) {
 	
  }
  void right() {
-	 if(x<250) {
+	 if(x<LeagueInvaders.WIDTH - 50) {
 		 x+=speed;
 	 }
  }
