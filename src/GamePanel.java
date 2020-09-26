@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont;
 	Font subtitleFont;
 	Timer frameDraw;
-	Rocketship rocketship = new Rocketship(500,700,50,50);
+	Rocketship rocketship = new Rocketship(250,700,50,50);
 public static void main(String[] args) {
 	
 }
@@ -82,7 +82,19 @@ public void actionPerformed(ActionEvent e) {
 	if(currentState == MENU){
 	    updateMenuState();
 	}else if(currentState == GAME){
-	    updateGameState();
+	    if (rocketship.up == true) {
+			rocketship.up();
+		}
+	    if(rocketship.down == true) {
+	    	rocketship.down();
+	    }
+	    if(rocketship.left == true) {
+	    	rocketship.left();
+	    }
+	    if (rocketship.right == true) {
+			rocketship.right();
+		}
+		updateGameState();
 	}else if(currentState == END){
 	    updateEndState();
 	}
@@ -107,20 +119,21 @@ public void keyPressed(KeyEvent e) {
 
 	if (currentState == GAME) {
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
-		   rocketship.up();
-		   System.out.println("UP");
+			 rocketship.up = true;
+			rocketship.up();
+		 
 		}
 		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			rocketship.down = true;
 			rocketship.down();
-			System.out.println("DOWN");
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-			rocketship.left();
-			System.out.println("LEFT");
+			rocketship.left = true;
+			rocketship.left();	
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			rocketship.right = true;
 			rocketship.right();
-			System.out.println("RIGHT");
 		}
 	}
 	
@@ -130,6 +143,21 @@ public void keyPressed(KeyEvent e) {
 @Override
 public void keyReleased(KeyEvent e) {
 	// TODO Auto-generated method stub
+
+	if (currentState == GAME) {
+		if (e.getKeyCode()==KeyEvent.VK_UP) {
+		   rocketship.up = false;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			rocketship.down = false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			rocketship.left = false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			rocketship.right = false;
+		}
+	}
 	
 }
 }
