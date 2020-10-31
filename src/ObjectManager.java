@@ -40,4 +40,12 @@ void draw(Graphics g) {
 		projectiles.get(i).draw(g);
 	}
 }
+void purgeObjects() {
+	for (int i = 0; i < aliens.size(); i++) {
+		aliens.get(i).isActive = true;
+	}
+	for (int i = 0; i < projectiles.size(); i++) {
+		projectiles.get(i).isActive = true;
+	}
+}
 }
