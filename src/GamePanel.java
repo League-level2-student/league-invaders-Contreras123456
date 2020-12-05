@@ -118,6 +118,7 @@ public void actionPerformed(ActionEvent e) {
 	}else if(currentState == END){
 	    updateEndState();
 	}
+
 	System.out.println("action");
 	repaint();
 }
@@ -132,19 +133,24 @@ public void keyPressed(KeyEvent e) {
 	if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 	    if (currentState == END) {
 	        currentState = MENU;
-	        startGame();
+	      
 	        
 	    } else {
 	        currentState++;
-	     alienSpawn.stop();
+	      if (currentState == GAME) {
+	    	  startGame();
+		} else {
+			alienSpawn.stop();
+		}
 	    }
+	    
 	} 
 
 	if (currentState == GAME) {
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 			 rocketship.up = true;
 			rocketship.up();
-		 
+	        
 		}
 		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
 			rocketship.down = true;
@@ -157,6 +163,9 @@ public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
 			rocketship.right = true;
 			rocketship.right();
+		}
+		if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+			objectmanager.addProjectile(rocketship.getProjectile());
 		}
 	}
 	

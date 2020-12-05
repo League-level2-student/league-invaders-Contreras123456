@@ -21,6 +21,7 @@ addAlien();
 
 void addAlien(){
 	aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
+	
 }
 void update() {
 for (int i = 0; i < aliens.size(); i++) {
@@ -57,6 +58,13 @@ void purgeObjects() {
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
+	addAlien();
+}
+public void addProjectile(Projectile projectile) {
+	// TODO Auto-generated method stub
+	projectiles.add(new Projectile(rocket.x,rocket.y,50,50));
+}
+void checkCollision() {
 	
 }
 }
