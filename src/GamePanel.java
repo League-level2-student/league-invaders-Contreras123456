@@ -59,6 +59,9 @@ void updateMenuState() {
 }
 void updateGameState() {
 	objectmanager.update();
+	if (rocketship.isActive = false) {
+		currentState = END;
+	}
 }
 void updateEndState() {
 	

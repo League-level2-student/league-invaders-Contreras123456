@@ -29,6 +29,8 @@ for (int i = 0; i < aliens.size(); i++) {
 	if (aliens.get(i).y> LeagueInvaders.HEIGHT) {
 		aliens.get(i).isActive = false;
 	}
+	checkCollision();
+	purgeObjects();
 }	
 for (int i = 0; i < projectiles.size(); i++) {
 	projectiles.get(i).update();
@@ -49,10 +51,14 @@ void draw(Graphics g) {
 }
 void purgeObjects() {
 	for (int i = 0; i < aliens.size(); i++) {
-		aliens.get(i).isActive = true;
+		if(aliens.get(i).isActive == false) {
+		aliens.remove(i);
+		}
 	}
 	for (int i = 0; i < projectiles.size(); i++) {
-		projectiles.get(i).isActive = true;
+		if(projectiles.get(i).isActive == false) {
+			projectiles.remove(i);
+		}
 	}
 }
 @Override
@@ -65,6 +71,16 @@ public void addProjectile(Projectile projectile) {
 	projectiles.add(new Projectile(rocket.x,rocket.y,50,50));
 }
 void checkCollision() {
-	
+	for (Alien alien: aliens) {
+		if (alien.collisionBox.intersects(rocket.collisionBox)) {
+		alien.isActive = false;
+		rocket.isActive = false;
+		} for (Projectile projectile : projectiles) {
+			if (projectile.collisionBox.intersects(alien.collisionBox)) {
+				projectile.isActive = false;
+				alien.isActive = false;
+			}
+		}
+	}
 }
 }
