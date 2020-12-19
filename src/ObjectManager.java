@@ -9,6 +9,7 @@ Rocketship rocket;
 ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 ArrayList<Alien> aliens = new ArrayList<Alien>();
 Random random = new Random();
+int score = 0;
 public static void main(String[] args) {
 	
 }
@@ -79,8 +80,13 @@ void checkCollision() {
 			if (projectile.collisionBox.intersects(alien.collisionBox)) {
 				projectile.isActive = false;
 				alien.isActive = false;
+				score++;
 			}
 		}
 	}
+	
+}
+int getScore(){
+	return score;
 }
 }

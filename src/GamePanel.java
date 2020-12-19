@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -77,6 +78,7 @@ void drawMenuState(Graphics g) {
 	g.drawString("Press SPACE for instructions", 50, 500);
 }
 void drawGameState(Graphics g) {
+	String currentscore = Integer.toString(objectmanager.getScore());
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 	if (gotImage) {
@@ -86,8 +88,9 @@ void drawGameState(Graphics g) {
 		g.fillRect(0, 0, LeagueInvaders.WIDTH , LeagueInvaders.HEIGHT);
 	}
 	objectmanager.draw(g);
-	
-
+	g.setFont(subtitleFont);
+	g.setColor(Color.RED);
+	g.drawString(currentscore, 30, 50);
 }
 void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
