@@ -38,6 +38,7 @@ GamePanel(){
 	 if (needImage) {
 		    loadImage ("space.png");
 		}
+	 
 }
 
 @Override
@@ -59,8 +60,11 @@ void updateMenuState() {
 	
 }
 void updateGameState() {
+	if (rocketship.isActive) {
+		objectmanager.update();
+	}
 	objectmanager.update();
-	if (rocketship.isActive = false) {
+	if (rocketship.isActive == false) {
 		currentState = END;
 	}
 }
@@ -139,8 +143,8 @@ public void keyPressed(KeyEvent e) {
 	if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 	    if (currentState == END) {
 	        currentState = MENU;
-	      
-	        
+	        rocketship = new Rocketship(250,700,50,50);
+	        objectmanager = new ObjectManager(rocketship);
 	    } else {
 	        currentState++;
 	      if (currentState == GAME) {

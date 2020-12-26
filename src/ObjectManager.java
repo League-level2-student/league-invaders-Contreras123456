@@ -30,16 +30,16 @@ for (int i = 0; i < aliens.size(); i++) {
 	if (aliens.get(i).y> LeagueInvaders.HEIGHT) {
 		aliens.get(i).isActive = false;
 	}
-	checkCollision();
-	purgeObjects();
+
 }	
 for (int i = 0; i < projectiles.size(); i++) {
 	projectiles.get(i).update();
-	if (projectiles.get(i).y> LeagueInvaders.HEIGHT) {
+	if (projectiles.get(i).y < 0) {
 		projectiles.get(i).isActive = false;
 	}
 }
-
+checkCollision();
+purgeObjects();
 }
 void draw(Graphics g) {
 	rocket.draw(g);
@@ -74,8 +74,9 @@ public void addProjectile(Projectile projectile) {
 void checkCollision() {
 	for (Alien alien: aliens) {
 		if (alien.collisionBox.intersects(rocket.collisionBox)) {
-		alien.isActive = false;
-		rocket.isActive = false;
+			alien.isActive = false;
+			rocket.isActive = false;
+			System.out.println("Rocket dead");
 		} for (Projectile projectile : projectiles) {
 			if (projectile.collisionBox.intersects(alien.collisionBox)) {
 				projectile.isActive = false;
